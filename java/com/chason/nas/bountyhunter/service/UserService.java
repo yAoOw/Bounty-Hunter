@@ -1,5 +1,6 @@
 package com.chason.nas.bountyhunter.service;
 
+import com.chason.nas.bountyhunter.model.ResponseModel;
 import com.chason.nas.bountyhunter.model.User;
 
 /**
@@ -12,5 +13,7 @@ import com.chason.nas.bountyhunter.model.User;
 public interface UserService {
 
     int addUser(User user);
+
+    ResponseModel loginUser(User user);
 
 }

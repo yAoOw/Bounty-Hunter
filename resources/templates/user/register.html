@@ -15,8 +15,8 @@
             <div class="col-md-9">
                 <div class="form-group">
                     <i class="fa fa-user fa-lg"></i>
-                   用户名： <input class="form-control required" type="text" placeholder="Username" id="username"
-                           name="username" autofocus="autofocus" maxlength="20"/>
+                   用户名： <input class="form-control required" type="text" placeholder="Username" id="userName"
+                           name="userName" autofocus="autofocus" maxlength="20" th:value="zhangsh"/>
                 </div>
                 <div class="form-group">
                     <i class="fa fa-lock fa-lg"></i>
@@ -29,12 +29,17 @@
                               name="password" maxlength="8" th:value="123"/>
                 </div>
                 <div class="form-group">
-                    <label class="checkbox">
-                        <input type="checkbox" name="remember" value="1"/>记住我
-                    </label>
+                    <i class="fa fa-lock fa-lg"></i>
+                    手机号：<input class="form-control required" type="text" placeholder="Password" id="phone"
+                                name="phone" maxlength="8" th:value="123"/>
                 </div>
-                <div class="form-group col-md-offset-9">toAdd
-                    <button type="submit" class="btn btn-success pull-right" onclick="toAdd()">确认注册</button>
+                <div class="form-group col-md-offset-9">
+                    <button type="button" class="btn btn-success pull-right" onclick="return toAdd()">确认注册</button>
+
+                    <button type="button" class="btn btn-success pull-right" onclick="return toLogin()">去登陆</button>
+                </div>
+                <div class="form-group col-md-offset-9">
+                    <button type="button" class="btn btn-success pull-right" onclick="return alerttest()">弹框调试</button>
                 </div>
             </div>
             </form>
@@ -42,10 +47,4 @@
     </div>
 </div>
 </body>
-
-<script>
-    function torRegister() {
-        window.location.href ="torRegister"
-    }
-</script>
 </html>

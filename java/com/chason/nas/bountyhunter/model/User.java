@@ -1,5 +1,6 @@
 package com.chason.nas.bountyhunter.model;
 
+
 public class User {
     private Integer userId;
 
@@ -39,5 +40,12 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone == null ? null : phone.trim();
+    }
+
+    public boolean isNullObj(){
+        if(this.userName==null && this.phone==null){
+            return true;
+        }
+        return false;
     }
 }

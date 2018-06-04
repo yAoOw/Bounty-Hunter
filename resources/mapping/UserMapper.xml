@@ -10,11 +10,28 @@
   <sql id="Base_Column_List">
     user_id, user_name, password, phone
   </sql>
+  <sql id="Select_where_list ">
+    <where>
+      <if test="userName != null">
+        and user_name = #{userName,jdbcType=VARCHAR}
+      </if>
+      <if test="phone !=null">
+        and phone = #{phone,jdbcType=VARCHAR}
+      </if>
+    </where>
+
+  </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from t_user
     where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByKey" parameterType="com.chason.nas.bountyhunter.model.User" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_user
+    <include refid="Select_where_list "/>
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from t_user

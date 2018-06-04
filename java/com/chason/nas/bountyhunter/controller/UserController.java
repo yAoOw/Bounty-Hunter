@@ -1,15 +1,12 @@
 package com.chason.nas.bountyhunter.controller;
 
+import com.chason.nas.bountyhunter.enums.ResponseEnum;
+import com.chason.nas.bountyhunter.model.ResponseModel;
 import com.chason.nas.bountyhunter.model.User;
 import com.chason.nas.bountyhunter.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-
-import javax.servlet.http.HttpServletRequest;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * <p>description: </p>
@@ -31,23 +28,25 @@ public class UserController {
         return "user/addUser";
     }
 
-    @GetMapping("/torRegister")
+    @GetMapping("/toRegister")
     public String register(){
         return "user/register";
     }
-    @RequestMapping(value = "/register" ,method = RequestMethod.POST)
-    public String addUser(HttpServletRequest request, Model model){
-        String name = request.getParameter("name");
-        String passWord = request.getParameter("passWord");
-        String phone = request.getParameter("re");
-        User user = new User();
-        user.setUserName(name);
-        user.setPassword(passWord);
-        user.setPassword(phone);
-         userService.addUser(user);
-        return "index";
+
+    @PostMapping(value = "/doRegister")
+    @ResponseBody
+    public ResponseModel addUser(User user){
+        int c =userService.addUser(user);
+        ResponseModel model = new ResponseModel(ResponseEnum.SUCCESS.getCode(),ResponseEnum.SUCCESS.getDesc(),c);
+        return model;
     }
 
 
+    @PostMapping(value = "/doLogin")
+    @ResponseBody
+    public ResponseModel login(User user){
+        return userService.loginUser(user);
+
+    }
 
 }

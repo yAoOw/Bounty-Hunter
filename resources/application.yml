@@ -14,7 +14,17 @@ spring:
   devtools:
     restart:
       enabled: true
+  aop:
+    auto: true
+    proxy-target-class: false
 mybatis:
   mapper-locations: classpath:mapping/*.xml
   type-aliases-package: com.chason.nas.bountyhunter.model
-
+logging:
+  path: /Users/zhang/logs/
+  level:
+    org.springfromework.web: info
+    com.chason.nas.bountyhunter.mapper: debug
+  pattern:
+    console: "%d %-5level %logger : %msg%n"
+    file: "%d %-5level [%thread] %logger : %msg%n"
